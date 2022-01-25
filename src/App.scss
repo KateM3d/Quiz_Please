@@ -1,0 +1,101 @@
+$colorOne: #F3C623;
+$colorTwo: #7b98b8;
+$fontOne: 'Roboto',
+sans-serif;
+%bkgrAndborder {
+    border: 2px solid $colorTwo;
+    background: radial-gradient(circle, rgba(1, 5, 31, 1) 52%, rgba(52, 77, 110, 1) 100%);
+}
+
+body {
+    background-color: #040c15;
+    width: 80%;
+    margin: auto;
+}
+
+h2,
+p {
+    color: white
+}
+
+.header {
+    text-align: center;
+    color: $colorOne;
+    font-family: $fontOne;
+}
+
+.container {
+    &_category {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        &_card {
+            margin: 20px;
+            // border: 2px solid $colorTwo;
+            // background: radial-gradient(circle, rgba(1, 5, 31, 1) 52%, rgba(52, 77, 110, 1) 100%);
+            @extend %bkgrAndborder;
+            border-radius: 20px;
+            width: 350px;
+            height: 200px;
+            &_name {
+                color: $colorOne;
+                font-family: $fontOne;
+                text-align: center;
+                align-items: center;
+                margin-top: 80px;
+            }
+            &:hover {
+                transform: scale(1.1);
+                transition: 1s ease-in;
+                cursor: pointer;
+            }
+        }
+    }
+    &_question {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        margin-top: 70px;
+        &_text {
+            width: 80%;
+            height: 80px;
+            border-radius: 50px;
+            font-family: $fontOne;
+            @extend %bkgrAndborder;
+            text-align: center;
+            padding-top: 20px;
+        }
+        &_answers {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-around;
+            text-align: center;
+            width: 80%;
+            margin-top: 70px;
+            &_option {
+                padding-top: 30px;
+                width: 500px;
+                height: 50px;
+                border-radius: 40px;
+                color: white;
+                font-family: $fontOne;
+                @extend %bkgrAndborder;
+            }
+        }
+        &_points {
+            margin-top: 30px;
+            color: $colorOne;
+            font-size: 25px;
+        }
+    }
+}
+
+.btn {
+    width: 250px;
+    height: 70px;
+    color: white;
+    font-family: $fontOne;
+    font-size: 25px;
+    border-radius: 20px;
+    @extend %bkgrAndborder;
+}
