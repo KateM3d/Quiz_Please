@@ -5,7 +5,7 @@ export default function Card() {
   const [categories, setCategories] = useState(data);
   return (
     <>
-      <h1 className="header">Please select the category</h1>
+      <h2 className="header">Please select the category</h2>
       <div className="container_category">
         {categories.map((element) => {
           const { id, categoryName } = element;

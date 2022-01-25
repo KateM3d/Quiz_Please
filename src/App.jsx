@@ -2,6 +2,7 @@ import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import Card from "./components/Card";
 import Question from "./components/Question";
 import NotFound from "./components/404";
+import Home from "./components/Home";
 import "./App.scss";
 
 export default function App() {
@@ -10,7 +11,7 @@ export default function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            <h2>hello</h2>
+            <Home />
           </Route>
           <Route exact path="/categories">
             <Card />

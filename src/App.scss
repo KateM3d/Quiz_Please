@@ -18,6 +18,17 @@ p {
     color: white
 }
 
+.home_header {
+    font-size: 120px;
+    text-align: center;
+    color: $colorOne;
+    &_text {
+        font-size: 30px;
+        text-align: center;
+        color: $colorOne;
+    }
+}
+
 .header {
     text-align: center;
     color: $colorOne;
@@ -25,14 +36,17 @@ p {
 }
 
 .container {
+    &_home {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+    }
     &_category {
         display: flex;
         flex-flow: row wrap;
         justify-content: space-around;
         &_card {
             margin: 20px;
-            // border: 2px solid $colorTwo;
-            // background: radial-gradient(circle, rgba(1, 5, 31, 1) 52%, rgba(52, 77, 110, 1) 100%);
             @extend %bkgrAndborder;
             border-radius: 20px;
             width: 350px;
@@ -80,6 +94,10 @@ p {
                 color: white;
                 font-family: $fontOne;
                 @extend %bkgrAndborder;
+                &:hover {
+                    border: 2px solid $colorOne;
+                    cursor: pointer;
+                }
             }
         }
         &_points {
