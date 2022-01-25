@@ -99,3 +99,11 @@ p {
     border-radius: 20px;
     @extend %bkgrAndborder;
 }
+
+.notFound {
+    color: white;
+    font-size: 300px;
+    &_text {
+        font-size: 100px;
+    }
+}
