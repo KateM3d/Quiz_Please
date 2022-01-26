@@ -131,3 +131,8 @@ p {
         font-size: 100px;
     }
 }
+
+.disabled {
+    cursor: not-allowed;
+    color: grey;
+}

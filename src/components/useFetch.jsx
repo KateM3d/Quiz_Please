@@ -1,5 +1,7 @@
-import { useEffect } from "react";
+export default function useFetch(baseUrl) {
+  const get = (url) => {
+    return fetch(baseUrl + url).then((response) => response.json());
+  };
 
-export default function useFetch() {
-  return <></>;
+  return { get };
 }
