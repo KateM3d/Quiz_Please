@@ -8,7 +8,7 @@ sans-serif;
 }
 
 body {
-    background-color: #040c15;
+    background: radial-gradient(circle, rgba(1, 5, 31, 1) 52%, rgba(52, 77, 110, 1) 100%);
     width: 80%;
     margin: auto;
 }
@@ -39,6 +39,7 @@ p {
     text-align: center;
     color: $colorOne;
     font-family: $fontOne;
+    margin-top: 50px;
 }
 
 .container {
@@ -122,6 +123,10 @@ p {
     font-size: 25px;
     border-radius: 20px;
     @extend %bkgrAndborder;
+    &:hover {
+        color: $colorOne;
+        cursor: pointer;
+    }
 }
 
 .notFound {
