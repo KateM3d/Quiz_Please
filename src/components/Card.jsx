@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { data } from "./data.js";
+import { data } from "../data.js";
 
 export default function Card() {
   const [categories, setCategories] = useState(data);
   return (
     <>
-      <h2 className="header">Please select the category</h2>
+      <h2 className="header">Please select a category</h2>
       <div className="container_category">
         {categories.map((element) => {
           const { id, categoryName } = element;

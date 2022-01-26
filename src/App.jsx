@@ -3,12 +3,16 @@ import Card from "./components/Card";
 import Question from "./components/Question";
 import NotFound from "./components/404";
 import Home from "./components/Home";
+import iconHome from "./icon_home.png";
 import "./App.scss";
 
 export default function App() {
   return (
     <>
       <BrowserRouter>
+        <Link to="/">
+          <img className="iconHome" src={iconHome} alt="icon" />
+        </Link>
         <Switch>
           <Route exact path="/">
             <Home />
