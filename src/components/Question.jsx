@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { APIContext } from "../context/ApiContext";
 import CardInner from "./CardInner.jsx";
+// import useFetch from "./useFetch.jsx";
 
 export default function Question(props) {
+  const { categoryQuestion, options } = useContext(APIContext);
   const [count, setCount] = useState(1);
   const [disabled, setDisabled] = useState();
+  const [questionCount, setQuestionCount] = useState(0);
 
   const handleCountIncrease = () => {
     if (count === 10) {
@@ -11,12 +15,16 @@ export default function Question(props) {
       setCount(10);
     } else {
       setCount((prevCount) => prevCount + 1);
+      setQuestionCount((prevCount) => prevCount + 1);
     }
   };
   return (
     <>
       <h2 className="header">Question {count} out of 10</h2>
-      <CardInner options={props.options} questionText={props.questionText} />
+      <CardInner
+        categoryQuestion={categoryQuestion[questionCount]}
+        options={options[questionCount]}
+      />
       <div className="container_question">
         <button
           className={`btn ${disabled === "disabled" ? "disabled" : ""}`}
