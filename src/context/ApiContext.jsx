@@ -22,10 +22,7 @@ export function APIContextProvider({ children }) {
           ...opt.incorrect_answers,
           opt.correct_answer,
         ]);
-        console.log(optionsArray);
         updateData(questionsArray, optionsArray);
-
-        console.log(categoryQuestion);
       })
       .catch((error) => console.log(error));
   }, []);

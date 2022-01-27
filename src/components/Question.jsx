@@ -1,7 +1,6 @@
 import { useState, useContext } from "react";
 import { APIContext } from "../context/ApiContext";
 import CardInner from "./CardInner.jsx";
-// import useFetch from "./useFetch.jsx";
 
 export default function Question(props) {
   const { categoryQuestion, options } = useContext(APIContext);
