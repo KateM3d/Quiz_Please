@@ -1,40 +1,40 @@
-import { useEffect, useState } from "react";
-import useFetch from "./useFetch.jsx";
+import { APIContext } from "../context/ApiContext";
 
-export default function CardInner() {
-  const { get } = useFetch("https://opentdb.com/api.php?amount=10&category=");
-  const [questionCount, setQuestionCount] = useState(0);
-  const [categoryQuestion, setCategoryQuestion] = useState("");
-  const [options, setOptions] = useState("");
+export default function CardInner(props) {
+  const shuffle = (opt) => {
+    console.log(opt);
+  };
+  console.log(shuffle(props.options));
 
-  useEffect(() => {
-    get("22")
-      .then((data) => {
-        console.log(data.results);
-
-        setCategoryQuestion(data.results[questionCount].question);
-      })
-      .catch((error) => console.log(error));
-  }, []);
-
+  console.log(props);
   return (
     <div className="container_question">
-      <h2 className="container_question_text" questionText={categoryQuestion}>
-        {categoryQuestion}
-      </h2>
+      <h2 className="container_question_text">{props.categoryQuestion}</h2>
       <div className="container_question_answers">
-        <p className="container_question_answers_option" options={options}>
-          opt1
+        <p
+          className="container_question_answers_option"
+          options={props.options}
+        >
+          {props.options}
         </p>
-        {/* <p className="container_question_answers_option" options={options}>
-          opt2
+        <p
+          className="container_question_answers_option"
+          options={props.options}
+        >
+          {props.options}
         </p>
-        <p className="container_question_answers_option" options={options}>
-          opt3
+        <p
+          className="container_question_answers_option"
+          options={props.options}
+        >
+          {props.options}
         </p>
-        <p className="container_question_answers_option" options={options}>
-          opt4
-        </p> */}
+        <p
+          className="container_question_answers_option"
+          options={props.options}
+        >
+          {props.options}
+        </p>
       </div>
     </div>
   );
