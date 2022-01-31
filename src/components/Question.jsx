@@ -1,12 +1,15 @@
+import { setSelectionRange } from "@testing-library/user-event/dist/utils";
 import { useState, useContext } from "react";
 import { APIContext } from "../context/ApiContext";
 import CardInner from "./CardInner.jsx";
 
 export default function Question(props) {
-  const { categoryQuestion, options } = useContext(APIContext);
+  const { categoryQuestion, options, correct } = useContext(APIContext);
   const [count, setCount] = useState(1);
   const [disabled, setDisabled] = useState();
   const [questionCount, setQuestionCount] = useState(0);
+  const [selected, setSelected] = useState("");
+  const [score, setScore] = useState(0);
 
   const handleCountIncrease = () => {
     if (count === 10) {
@@ -15,12 +18,19 @@ export default function Question(props) {
     } else {
       setCount((prevCount) => prevCount + 1);
       setQuestionCount((prevCount) => prevCount + 1);
+      if (correct === selected) {
+        setSelectionRange((prevScore) => prevScore + 1);
+      }
     }
   };
+
+  console.log(correct);
   return (
     <>
       <h2 className="header">Question {count} out of 10</h2>
       <CardInner
+        selected={selected}
+        setSelected={setSelected}
         categoryQuestion={categoryQuestion[questionCount]}
         options={options[questionCount]}
       />
@@ -32,7 +42,7 @@ export default function Question(props) {
         >
           Next
         </button>
-        <h2 className="container_question_points">Score: </h2>
+        <h2 className="container_question_points">Score: {score}</h2>
       </div>
     </>
   );

@@ -145,3 +145,8 @@ p {
 .none {
     display: none;
 }
+
+.selectedYellow {
+    border: 2px solid $colorOne;
+    background-color: hotpink;
+}

@@ -1,13 +1,27 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { data } from "../data.js";
+import { useContext } from "react";
+import { APIContext } from "../context/ApiContext";
+import { questionId } from "..//context/ApiContext";
 
 export default function Card() {
+  const {
+    categoryQuestion,
+    options,
+    correct,
+    setCorrect,
+    categorySelected,
+    setCategorySelected,
+  } = useContext(APIContext);
+
   const [categories] = useState(data);
 
   const handleCategoryClick = (categoryName) => {
     console.log(categoryName);
+    setCategorySelected(categoryName);
   };
+  console.log(categorySelected);
   return (
     <>
       <h2 className="header">Please select a category</h2>

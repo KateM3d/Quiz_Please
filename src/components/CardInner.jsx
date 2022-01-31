@@ -1,6 +1,14 @@
+// import { useContext } from "react";
+// import { APIContext } from "../context/ApiContext";
+import { useState } from "react";
+
 export default function CardInner(props) {
+  // const { categoryQuestion, options, correct, setCorrect } =
+  //   useContext(APIContext);
+
+  const [chosen, setChosen] = useState("false");
+  console.log(props);
   const shuffle = (opt) => {
-    console.log(opt);
     let i = 0;
     let j = 0;
     let temp = 0;
@@ -11,17 +19,15 @@ export default function CardInner(props) {
       opt[i] = opt[j];
       opt[j] = temp;
     }
-    // const separatedOptions = {
-    //   optionOne: opt[0],
-    //   optionTwo: opt[1],
-    //   optionThree: opt[2],
-    //   optionFour: opt[3],
-    // };
-    // console.log(separatedOptions);
   };
-  console.log(shuffle(props.options));
+  shuffle(props.options);
 
-  console.log(props.options[2]);
+  const handleSelectedClick = (e, el, index) => {
+    e.preventDefault();
+    console.log(el);
+    props.setSelected(el);
+  };
+  console.log(props.selected);
   return (
     <div className="container_question">
       <h2 className="container_question_text">{props.categoryQuestion}</h2>
@@ -32,46 +38,14 @@ export default function CardInner(props) {
               key={index}
               className={`container_question_answers_option ${
                 el === undefined && "none"
-              }`}
+              } ${chosen === true && "selectedYellow"}`}
+              onClick={(e) => handleSelectedClick(e, el, index)}
               options={el}
             >
               {el}
             </p>
           );
         })}
-
-        {/* <p
-          className={`container_question_answers_option ${
-            props.options[0] === undefined && "none"
-          }`}
-          options={props.options[0]}
-        >
-          {props.options[0]}
-        </p>
-        <p
-          className={`container_question_answers_option ${
-            props.options[1] === undefined && "none"
-          }`}
-          options={props.options[1]}
-        >
-          {props.options[1]}
-        </p>
-        <p
-          className={`container_question_answers_option ${
-            props.options[2] === undefined && "none"
-          }`}
-          options={props.options[2]}
-        >
-          {props.options[2]}
-        </p>
-        <p
-          className={`container_question_answers_option ${
-            props.options[3] === undefined && "none"
-          }`}
-          options={props.options[3]}
-        >
-          {props.options[3]}
-        </p> */}
       </div>
     </div>
   );
