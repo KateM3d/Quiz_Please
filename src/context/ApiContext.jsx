@@ -24,8 +24,9 @@ export function APIContextProvider({ children }) {
     setOptions([...optionsValue]);
   }
 
-  useEffect(() => {
-    get(categorySelected)
+  const getQuestionsData = (id) => {
+    console.log(id);
+    get(id)
       .then((data) => {
         console.log(data.results);
         const questionsArray = data.results.map((el) => el.question);
@@ -40,7 +41,24 @@ export function APIContextProvider({ children }) {
         setCorrect(correctAnsw);
       })
       .catch((error) => console.log(error));
-  }, [categorySelected]);
+  };
+  // useEffect(() => {
+  //   get(22)
+  //     .then((data) => {
+  //       console.log(data.results);
+  //       const questionsArray = data.results.map((el) => el.question);
+  //       const optionsArray = data.results.map((opt) => [
+  //         ...opt.incorrect_answers,
+  //         opt.correct_answer,
+  //       ]);
+  //       const correctAnsw = data.results.map((answ) => {
+  //         return answ.correct_answer;
+  //       });
+  //       updateData(questionsArray, optionsArray);
+  //       setCorrect(correctAnsw);
+  //     })
+  //     .catch((error) => console.log(error));
+  // }, [22]);
   console.log(correct);
   return (
     <APIContext.Provider
@@ -54,6 +72,7 @@ export function APIContextProvider({ children }) {
         setOptions,
         updateData,
         setCategoryQuestion,
+        getQuestionsData,
       }}
     >
       {children}

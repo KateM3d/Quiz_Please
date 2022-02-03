@@ -8,7 +8,6 @@ export default function Question(props) {
   const [count, setCount] = useState(1);
   const [disabled, setDisabled] = useState();
   const [questionCount, setQuestionCount] = useState(0);
-  const [selected, setSelected] = useState("");
   const [score, setScore] = useState(0);
 
   const handleCountIncrease = () => {
@@ -18,9 +17,9 @@ export default function Question(props) {
     } else {
       setCount((prevCount) => prevCount + 1);
       setQuestionCount((prevCount) => prevCount + 1);
-      if (correct === selected) {
-        setSelectionRange((prevScore) => prevScore + 1);
-      }
+      // if (correct === selected) {
+      setScore((prevScore) => prevScore + 1);
+      // }
     }
   };
 
@@ -29,8 +28,6 @@ export default function Question(props) {
     <>
       <h2 className="header">Question {count} out of 10</h2>
       <CardInner
-        selected={selected}
-        setSelected={setSelected}
         categoryQuestion={categoryQuestion[questionCount]}
         options={options[questionCount]}
       />

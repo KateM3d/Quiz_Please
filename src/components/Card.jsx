@@ -13,15 +13,45 @@ export default function Card() {
     setCorrect,
     categorySelected,
     setCategorySelected,
+    getQuestionsData,
   } = useContext(APIContext);
 
   const [categories] = useState(data);
 
   const handleCategoryClick = (categoryName) => {
-    console.log(categoryName);
-    setCategorySelected(categoryName);
+    switch (categoryName) {
+      case "Geography":
+        getQuestionsData("22");
+        break;
+      case "Sports":
+        getQuestionsData("21");
+        break;
+      case "History":
+        getQuestionsData("23");
+        break;
+      case "Art":
+        getQuestionsData("25");
+        break;
+      case "Celebrities":
+        getQuestionsData("26");
+        break;
+      case "Animals":
+        getQuestionsData("27");
+        break;
+      case "Vehicles":
+        getQuestionsData("28");
+        break;
+
+      case "General Knowledge":
+        getQuestionsData("9");
+        break;
+      default:
+        console.log(`Sorry, we are out of ${categoryName}.`);
+
+        console.log(categoryName);
+    }
   };
-  console.log(categorySelected);
+
   return (
     <>
       <h2 className="header">Please select a category</h2>
