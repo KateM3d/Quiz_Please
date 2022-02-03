@@ -3,16 +3,6 @@ import useFetch from "../components/useFetch";
 
 export const APIContext = createContext();
 
-export const questionId = {
-  geography: 22,
-  sports: 21,
-  history: 23,
-  art: 25,
-  celebrities: 26,
-  animals: 27,
-  vehicles: 28,
-  generalKnowledge: 9,
-};
 export function APIContextProvider({ children }) {
   const { get } = useFetch("https://opentdb.com/api.php?amount=10&category=");
   const [categoryQuestion, setCategoryQuestion] = useState([]);

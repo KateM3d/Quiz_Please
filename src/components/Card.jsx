@@ -3,7 +3,6 @@ import { useState } from "react";
 import { data } from "../data.js";
 import { useContext } from "react";
 import { APIContext } from "../context/ApiContext";
-import { questionId } from "..//context/ApiContext";
 
 export default function Card() {
   const {
