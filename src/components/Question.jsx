@@ -34,6 +34,14 @@ export default function Question({}) {
         <h2 className="container_question_text">
           {categoryQuestion[questionCount]}
         </h2>
+        {/* <div className="container_question_answers">
+          {selectedArray[questionCount].map((answer) => {
+            return (
+              <p className="container_question_answers_option">{answer}</p>
+            );
+          })}
+        </div>*/}
+
         <div className="container_question_answers">
           <p className="container_question_answers_option">
             {selectedArray[questionCount]}
