@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext } from "react";
+import { useState, createContext } from "react";
 import useFetch from "../components/useFetch";
 
 export const APIContext = createContext();
@@ -15,7 +15,6 @@ export function APIContextProvider({ children }) {
   }
 
   const getQuestionsData = (id) => {
-    console.log(id);
     get(id)
       .then((data) => {
         console.log(data.results);
@@ -32,24 +31,7 @@ export function APIContextProvider({ children }) {
       })
       .catch((error) => console.log(error));
   };
-  // useEffect(() => {
-  //   get(22)
-  //     .then((data) => {
-  //       console.log(data.results);
-  //       const questionsArray = data.results.map((el) => el.question);
-  //       const optionsArray = data.results.map((opt) => [
-  //         ...opt.incorrect_answers,
-  //         opt.correct_answer,
-  //       ]);
-  //       const correctAnsw = data.results.map((answ) => {
-  //         return answ.correct_answer;
-  //       });
-  //       updateData(questionsArray, optionsArray);
-  //       setCorrect(correctAnsw);
-  //     })
-  //     .catch((error) => console.log(error));
-  // }, [22]);
-  console.log(correct);
+
   return (
     <APIContext.Provider
       value={{

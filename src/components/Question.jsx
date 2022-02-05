@@ -1,9 +1,7 @@
-import { setSelectionRange } from "@testing-library/user-event/dist/utils";
 import { useState, useContext } from "react";
 import { APIContext } from "../context/ApiContext";
-import CardInner from "./CardInner.jsx";
 
-export default function Question(props) {
+export default function Question({}) {
   const { categoryQuestion, options, correct } = useContext(APIContext);
   const [count, setCount] = useState(1);
   const [disabled, setDisabled] = useState();
@@ -22,15 +20,36 @@ export default function Question(props) {
       // }
     }
   };
-
-  console.log(correct);
+  const selectedArray = [...options];
+  console.log(selectedArray);
   return (
     <>
       <h2 className="header">Question {count} out of 10</h2>
-      <CardInner
+      {/* <CardInner
         categoryQuestion={categoryQuestion[questionCount]}
         options={options[questionCount]}
-      />
+      /> */}
+
+      <div className="container_question">
+        <h2 className="container_question_text">
+          {categoryQuestion[questionCount]}
+        </h2>
+        <div className="container_question_answers">
+          <p className="container_question_answers_option">
+            {selectedArray[questionCount]}
+          </p>
+          <p className="container_question_answers_option">
+            {selectedArray[questionCount]}
+          </p>
+          <p className="container_question_answers_option">
+            {selectedArray[questionCount]}
+          </p>
+          <p className="container_question_answers_option">
+            {selectedArray[questionCount]}
+          </p>
+        </div>
+      </div>
+
       <div className="container_question">
         <button
           className={`btn ${disabled === "disabled" ? "disabled" : ""}`}

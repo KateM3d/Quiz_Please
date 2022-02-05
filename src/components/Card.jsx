@@ -5,15 +5,7 @@ import { useContext } from "react";
 import { APIContext } from "../context/ApiContext";
 
 export default function Card() {
-  const {
-    categoryQuestion,
-    options,
-    correct,
-    setCorrect,
-    categorySelected,
-    setCategorySelected,
-    getQuestionsData,
-  } = useContext(APIContext);
+  const { getQuestionsData, options } = useContext(APIContext);
 
   const [categories] = useState(data);
 
@@ -46,8 +38,6 @@ export default function Card() {
         break;
       default:
         console.log(`Sorry, we are out of ${categoryName}.`);
-
-        console.log(categoryName);
     }
   };
 
