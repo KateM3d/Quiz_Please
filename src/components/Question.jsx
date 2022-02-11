@@ -21,43 +21,40 @@ export default function Question({}) {
     }
   };
   const selectedArray = [...options];
-  console.log(selectedArray);
+
+  const handleAnswerCheck = ({ answer }) => {
+    console.log(correct);
+    const selectedAnswer = { answer };
+    console.log(selectedAnswer);
+    console.log(selectedArray[questionCount]);
+    const answerCheck = correct.includes(selectedAnswer.answer);
+    console.log(answerCheck);
+    if (answerCheck) {
+      const correctSelected = [selectedAnswer.answer];
+      console.log(correctSelected);
+    }
+  };
   return (
     <>
       <h2 className="header">Question {count} out of 10</h2>
-      {/* <CardInner
-        categoryQuestion={categoryQuestion[questionCount]}
-        options={options[questionCount]}
-      /> */}
-
       <div className="container_question">
         <h2 className="container_question_text">
           {categoryQuestion[questionCount]}
         </h2>
-        {/* <div className="container_question_answers">
-          {selectedArray[questionCount].map((answer) => {
+        <div className="container_question_answers">
+          {selectedArray[questionCount]?.map((answer) => {
             return (
-              <p className="container_question_answers_option">{answer}</p>
+              <p
+                key={answer}
+                onClick={() => handleAnswerCheck({ answer })}
+                className="container_question_answers_option"
+              >
+                {answer}
+              </p>
             );
           })}
-        </div>*/}
-
-        <div className="container_question_answers">
-          <p className="container_question_answers_option">
-            {selectedArray[questionCount]}
-          </p>
-          <p className="container_question_answers_option">
-            {selectedArray[questionCount]}
-          </p>
-          <p className="container_question_answers_option">
-            {selectedArray[questionCount]}
-          </p>
-          <p className="container_question_answers_option">
-            {selectedArray[questionCount]}
-          </p>
         </div>
       </div>
-
       <div className="container_question">
         <button
           className={`btn ${disabled === "disabled" ? "disabled" : ""}`}
