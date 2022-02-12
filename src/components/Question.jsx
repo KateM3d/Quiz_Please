@@ -7,21 +7,23 @@ export default function Question() {
   const [count, setCount] = useState(1);
   const [questionCount, setQuestionCount] = useState(0);
   const [score, setScore] = useState(0);
+  const selectedArray = [...options];
+  console.log(options);
+  const shuffledOptions = useMemo(() => newOptions(options), [options]);
 
-  const shuffledOptions = () => {
-    let ind = [1, 2, 3, 4];
+  const newOptions = () => {
     let i = 0;
     let j = 0;
     let temp = 0;
-    for (i = ind.length - 1; i > 0; i -= 1) {
+    for (i = selectedArray.length - 1; i > 0; i -= 1) {
       j = Math.floor(Math.random() * (i + 1));
-      temp = ind[i];
-      ind[i] = ind[j];
-      ind[j] = temp;
+      temp = selectedArray[i];
+      selectedArray[i] = selectedArray[j];
+      selectedArray[j] = temp;
     }
-    return ind;
+    return selectedArray;
   };
-
+  console.log(newOptions);
   const handleCountIncrease = () => {
     if (count === 10) {
       setCount(10);
@@ -34,7 +36,6 @@ export default function Question() {
       shuffledOptions();
     }
   };
-  const selectedArray = [...options];
 
   const handleAnswerCheck = ({ answer }) => {
     const selectedAnswer = { answer };
@@ -51,8 +52,6 @@ export default function Question() {
         </h2>
         <div className="container_question_answers">
           {selectedArray[questionCount]?.map((answer, i) => {
-            shuffledOptions();
-
             return (
               <p
                 key={i}

@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 import useFetch from "../components/useFetch";
 
 export const APIContext = createContext();
