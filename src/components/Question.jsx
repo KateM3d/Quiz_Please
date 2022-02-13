@@ -9,7 +9,6 @@ export default function Question() {
   const [score, setScore] = useState(0);
   const selectedArray = [...options];
   console.log(options);
-  const shuffledOptions = useMemo(() => newOptions(options), [options]);
 
   const newOptions = () => {
     let i = 0;
@@ -23,6 +22,8 @@ export default function Question() {
     }
     return selectedArray;
   };
+
+  const shuffledOptions = useMemo(() => newOptions(options), [questionCount]);
   console.log(newOptions);
   const handleCountIncrease = () => {
     if (count === 10) {
@@ -33,7 +34,6 @@ export default function Question() {
     } else {
       setCount((prevCount) => prevCount + 1);
       setQuestionCount((prevCount) => prevCount + 1);
-      shuffledOptions();
     }
   };
 
